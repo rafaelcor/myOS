@@ -3,14 +3,16 @@ escribir:
 	.next:
 		mov dl, [textCursorXPos]
 		mov dh, [textCursorYPos]
-		mov bh, 01h
+		mov bh, 00h
 		mov ah, 02h
 		int 10h
 		
 		mov al, [si] ; mov to al content of address si
 		cmp al, 00h ; compare
 		je .done ; if equal jump
-		mov ah, 0Eh ; teletype
+		mov ah, 0eh ; teletype
+		mov cx, 01h
+		mov bx, 01h
 		int 10h ; int
 		
 		inc si ; increment + 1 si

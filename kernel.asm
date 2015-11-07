@@ -43,9 +43,6 @@ _gui:
 	jmp $
 
 _term:
-	;mov ah, 0Eh
-	;mov al, 1Eh
-	;int 10h
 	mov [si], byte '*'
 	mov [si+1], byte '('
 	mov [si+2], byte ''
