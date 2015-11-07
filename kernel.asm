@@ -25,7 +25,7 @@ _term:
 		je _enterKey
 		
 		_enterKey:
-			mov bh, [textCursorXPos]
+			mov bh, [textCursorYPos]
 			inc bh
 			mov [textCursorYPos], bh
 			
