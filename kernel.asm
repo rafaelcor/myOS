@@ -71,6 +71,7 @@ _term:
 			mov bh, [textCursorYPos]
 			inc bh
 			mov [textCursorYPos], bh
+			mov [textCursorXPos], 00h
 			jmp _term
 			
 		.done:
