@@ -1,5 +1,4 @@
 use16
-org 0x7C98
 
 _main:
 	mov ah, 00h ; int 10h set video mode
