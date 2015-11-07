@@ -57,14 +57,6 @@ _term:
 		
 		cmp ah, 1Ch
 		je _enterKey
-		
-		_enterKey:
-			mov bh, [textCursorYPos]
-			inc bh
-			mov [textCursorYPos], bh
-			jmp _term
-			
-			
 			
 		mov bh, [textCursorXPos]
 		cmp bh, 20
@@ -74,6 +66,13 @@ _term:
 		mov [si+1], byte ''
 		call escribir
 		jmp _readkeyb
+		
+		_enterKey:
+			mov bh, [textCursorYPos]
+			inc bh
+			mov [textCursorYPos], bh
+			jmp _term
+			
 		.done:
 			ret
 	
