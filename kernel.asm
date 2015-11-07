@@ -25,6 +25,9 @@ _term:
 		
 		cmp ah, 1Ch
 		je _enterKey
+		
+		cmp ah, 0Eh
+		je _backSpaceKey
 			
 		mov bh, [textCursorXPos]
 		cmp bh, 20
@@ -34,6 +37,10 @@ _term:
 		mov [si+1], byte ''
 		call escribir
 		jmp _readkeyb
+		
+		_backSpaceKey:
+			call borrar
+			jmp _readkeyb
 		
 		_enterKey:
 			mov bh, [textCursorYPos]

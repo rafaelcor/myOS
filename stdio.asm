@@ -25,4 +25,28 @@ escribir:
 		pop si ; gets from stack
 		ret
 
+borrar:
+	push si	; saves to stack
+	.next:
+		mov dl, [textCursorXPos]
+		mov dh, [textCursorYPos]
+		dec dl
+		mov [textCursorXPos], dl
+		
+		mov bh, 00h
+		mov ah, 02h
+		int 10h
+		
+		mov al, ''
+		mov ah, 0eh ; teletype
+		mov cx, 01h
+		mov bx, 01h
+		int 10h ; int
+		
+		 
+		jmp .next ; inconditional jump
+	.done:
+		pop si ; gets from stack
+		ret
+
 		
