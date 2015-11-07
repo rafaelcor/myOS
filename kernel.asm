@@ -1,4 +1,5 @@
 use16
+org 0x7C98
 
 _main:
 	mov ah, 00h ; int 10h set video mode
@@ -6,41 +7,9 @@ _main:
 	int 10h ; int 10h
 	
 	call _term
-	;call _gui
 	
 	jmp $
 
-
-_gui:
-	mov ah, 00h
-	mov al, 0Dh
-	int 10h
-	
-	mov ah, 0Eh
-	mov al, 1Eh
-	mov bl, 5h
-	int 10h
-	
-	
-	
-	jmp _mousem
-	_mousem:
-		mov ax, 03h
-		int 33h
-		
-		mov ah, 02h
-		mov bh, 01h
-		mov dl, ch
-		mov dh, dh
-		int 10h
-		
-		mov ah, 0Eh
-		mov al, 1Eh
-		mov bl, 5h
-		int 10h
-		jmp _mousem
-	
-	jmp $
 
 _term:
 	mov [si], byte '*'
