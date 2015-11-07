@@ -29,8 +29,8 @@ _term:
 			inc bh
 			mov [textCursorYPos], bh
 			
-		
-		
+			
+			
 		mov bh, [textCursorXPos]
 		cmp bh, 20
 		jge _readkeyb

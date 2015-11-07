@@ -3,6 +3,7 @@ escribir:
 	.next:
 		mov dl, [textCursorXPos]
 		mov dh, [textCursorYPos]
+		mov bh, 01h
 		mov ah, 02h
 		int 10h
 		
