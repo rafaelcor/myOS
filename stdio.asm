@@ -7,7 +7,10 @@ escribir:
 		mov ah, 0Eh ; teletype
 		int 10h ; int
 		inc si ; increment + 1 si
-		inc [textCursorPos]
+		;inc [textCursorPos]
+		mov bh, [textCursorPos]
+		inc bh
+		mov [textCursorPos], bh
 		 
 		jmp .next ; inconditional jump
 	.done:

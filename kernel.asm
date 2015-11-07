@@ -20,7 +20,8 @@ _term:
 	_readkeyb:
 		mov ah, 00h
 		int 16h
-		cmp [textCursorPos], 2
+		mov bh, [textCursorPos]
+		cmp bh, 10
 		jge _readkeyb
 		mov [si+0], al
 		mov [si+1], byte ''
@@ -33,5 +34,5 @@ _term:
 	
 include 'stdio.asm'
 
-textCursorPos dd 00h
+textCursorPos db 00h
 kernelMsg db "hello", 0
