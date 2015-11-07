@@ -20,9 +20,21 @@ _term:
 	_readkeyb:
 		mov ah, 00h
 		int 16h
-		mov bh, [textCursorPos]
-		cmp bh, 10
+		
+		cmp ah, 0Eh
+		je _enterKey
+		
+		_enterKey:
+			mov bh, [textCursorXPos]
+			inc bh
+			mov [textCursorYPos], bh
+			
+		
+		
+		mov bh, [textCursorXPos]
+		cmp bh, 20
 		jge _readkeyb
+		
 		mov [si+0], al
 		mov [si+1], byte ''
 		call escribir
@@ -34,5 +46,6 @@ _term:
 	
 include 'stdio.asm'
 
-textCursorPos db 00h
+textCursorXPos db 00h
+textCursorYPos db 00h
 kernelMsg db "hello", 0
