@@ -5,6 +5,9 @@ _main:
 	mov al, 03h ; video mode text mode 16 colors 80x25
 	int 10h ; int 10h
 	
+	mov sp, stack_start ; Set stack pointer (Let's avoid errors!)
+	mov bp, stack_start ; Set stack bottom
+	
 	call _term
 	
 	jmp $
@@ -49,3 +52,7 @@ include 'stdio.asm'
 textCursorXPos db 00h
 textCursorYPos db 00h
 kernelMsg db "hello", 0
+
+stack_end:
+    times 4096 db 0 ; 4KB stack
+stack_start:
