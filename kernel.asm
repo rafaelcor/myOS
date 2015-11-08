@@ -39,7 +39,7 @@ _main:
 	MOV DL,80h ;Primera disquetera
 	MOV BX,00h ;ES:BX - 0000:0800
 	INT 13h
-	JMP 0000h:00h ;Saltamos a la direccion que acaba de leer
+	call 0000h:7e00h ;Saltamos a la direccion que acaba de leer
 	
 	
 	
