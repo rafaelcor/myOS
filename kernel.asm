@@ -8,6 +8,41 @@ _main:
 	mov sp, stack_start ; Set stack pointer (Let's avoid errors!)
 	mov bp, stack_start ; Set stack bottom
 	
+	mov ah, 03h
+	mov al, 05h
+	mov ch, 00h
+	mov cl, 00h
+	mov dl, 80h
+	mov dh, 01h
+	
+	;b4 0e b0 66 cd 10 c3
+	mov si, 00h
+	mov [si], byte 0b4h
+	mov [si+1], byte 0eh
+	mov [si+2], byte 0b0h
+	mov [si+3], byte 066h
+	mov [si+4], byte 0cdh
+	mov [si+5], byte 010h
+	mov [si+6], byte 0c3h
+	
+	mov cx, 00h
+	mov es, cx
+	mov bx, cx
+	
+	int 13h
+	
+	MOV AH,02h
+	MOV AL,01h ;10 sectores a leer
+	MOV CH,00h ;Cilindro 2
+	MOV CL,00h ;Empezamos desde el primer sector
+	MOV DH,01 ;Cabeza 1
+	MOV DL,80h ;Primera disquetera
+	MOV BX,00h ;ES:BX - 0000:0800
+	INT 13h
+	JMP 0000h:00h ;Saltamos a la direccion que acaba de leer
+	
+	
+	
 	call _term
 	
 	jmp $
