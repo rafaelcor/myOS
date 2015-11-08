@@ -21,6 +21,7 @@ escribir:
 		mov [textCursorXPos], bh
 		 
 		jmp .next ; inconditional jump
+
 	.done:
 		pop si ; gets from stack
 		ret
@@ -29,9 +30,8 @@ borrar:
 	push si	; saves to stack
 	mov dl, [textCursorXPos]
 	cmp dl, 02h
-	jg .next
-	jmp $
-	.next:
+	jle .done
+	
 		mov dl, [textCursorXPos]
 		mov dh, [textCursorYPos]
 		dec dl
@@ -46,11 +46,8 @@ borrar:
 		mov cx, 01h
 		mov ah, 0Ah
 		int 10h ; int
-		
-		 
-		jmp .done ; inconditional jump
+
 	.done:
 		pop si ; gets from stack
 		ret
-
 		
