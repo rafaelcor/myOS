@@ -30,6 +30,7 @@ borrar:
 	mov dl, [textCursorXPos]
 	cmp dl, 02h
 	jg .next
+	jmp $
 	.next:
 		mov dl, [textCursorXPos]
 		mov dh, [textCursorYPos]
