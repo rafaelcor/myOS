@@ -37,14 +37,14 @@ borrar:
 		mov ah, 02h
 		int 10h
 		
-		mov al, ''
-		mov ah, 0eh ; teletype
+		mov al, 00h
+		mov bh, 00h
 		mov cx, 01h
-		mov bx, 01h
+		mov ah, 0Ah
 		int 10h ; int
 		
 		 
-		jmp .next ; inconditional jump
+		jmp .done ; inconditional jump
 	.done:
 		pop si ; gets from stack
 		ret
