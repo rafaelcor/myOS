@@ -39,7 +39,10 @@ _term:
 		jmp _readkeyb
 		
 		_backSpaceKey:
+			mov bh, [textCursorXPos]
+			cmp bh, 03h
 			call borrar
+				
 			jmp _readkeyb
 		
 		_enterKey:

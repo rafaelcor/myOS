@@ -27,6 +27,9 @@ escribir:
 
 borrar:
 	push si	; saves to stack
+	mov dl, [textCursorXPos]
+	cmp dl, 02h
+	jg .next
 	.next:
 		mov dl, [textCursorXPos]
 		mov dh, [textCursorYPos]
